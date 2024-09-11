@@ -1,0 +1,59 @@
+let campoIdade;
+let campoFantasia;
+let campoAventura;
+let campoComedia;
+
+function setup() {
+  createCanvas(800, 400);
+  createElement("h2", "Recomendador de filmes");
+  createSpan("Sua idade:");
+  campoIdade = createInput("5");
+  campoFantasia = createCheckbox("Gosta de fantasia?");
+  campoAventura = createCheckbox("Gosta de aventura?");
+  campoComedia = createCheckbox ("Gosta de comédia?");
+
+{
+  
+}}
+
+function draw() {
+  background("pink");
+  let idade = campoIdade.value();
+  let gostaDeFantasia = campoFantasia.checked();
+  let gostaDeAventura = campoAventura.checked();
+  let gostaDeComedia = campoComedia.checked();
+  let recomendacao = geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura, gostaDeComedia);
+
+  fill(color(76, 0, 115));
+  textAlign(CENTER, CENTER);
+  textSize(38);
+  text(recomendacao, width / 2, height / 2);
+}
+
+function geraRecomendacao(idade, gostaDeFantasia, gostaDeAventura, gostaDeComedia) {
+  if (idade >= 10) {
+    if (idade >= 14) {
+      return "As patricinhas de Bervely Hills";
+    } else {
+      if (idade >= 12) {
+        if(gostaDeComedia || gostaDeAventura) {
+          return "Trocados";          
+        } else{
+         return "As branquelas";
+        }
+      } else {
+        if (gostaDeFantasia) {
+          return "As cronicas de Nárnia";
+        } else {
+          return "Homem aranha: sem volta pra casa";
+        }
+      }
+    }
+  } else {
+    if (gostaDeFantasia) {
+      return "A bailarina";
+    } else {
+      return "As aventuras de Sharkboy e Lavagirl";
+    }
+  }
+}
